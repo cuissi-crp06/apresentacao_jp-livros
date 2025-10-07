@@ -1,270 +1,231 @@
+%==============================================================================
+% APRESENTAÇÃO BEAMER - VERSÃO FINAL COM TABELAS
+%==============================================================================
+
 \documentclass{beamer}
 
-% --- 1. TEMA ESTRUTURAL ---
+%==============================================================================
+% 1. TEMA E ESTRUTURA VISUAL
+%==============================================================================
 \usetheme{metropolis}
 
-% --- 2. PACOTES ---
+%==============================================================================
+% 2. PACOTES ESSENCIAIS (PREÂMBULO FINAL E LIMPO)
+%==============================================================================
 \usepackage{fontspec}
-\usepackage{tikz}
-\usepackage{pgfplots}
-\usepackage{pgfplotstable}
-\pgfplotsset{compat=1.18}
-\usepgfplotslibrary{groupplots} % Necessário para xbar interval
+\usepackage{booktabs} % Para tabelas com aspeto profissional
+\usepackage{multicol} % Para criar colunas de texto
 
-% --- 3. FONTES INSTITUCIONAIS ---
-\setsansfont{NEWJUNE-REGULAR.OTF}[
-    Path           = ./fonts/,
-    UprightFont    = NEWJUNE-REGULAR.OTF,
-    ItalicFont     = NEWJUNE-REGULAR-ITALIC.OTF,
-    BoldFont       = NEWJUNE-BOLD.OTF,
-    BoldItalicFont = NEWJUNE-BOLD-ITALIC.OTF
-]
+%==============================================================================
+% 3. CONFIGURAÇÃO DE FONTES
+%==============================================================================
+\usepackage[light]{sourcesanspro}
 
-% --- 4. CORES E ESTILOS PERSONALIZADOS ---
+%==============================================================================
+% 4. PALETA DE CORES E IDENTIDADE VISUAL
+%==============================================================================
 \definecolor{crpPrincipal}{HTML}{422C73}
 \definecolor{crpSecundaria2}{HTML}{BF73AB}
+
 \setbeamercolor{normal text}{fg=crpPrincipal, bg=white}
 \setbeamercolor{progress bar}{fg=crpSecundaria2, bg=crpPrincipal!20}
-\setbeamercolor{frametitle}{bg=crpPrincipal}
-\addtobeamertemplate{frametitle}{\color{white}}{\color{white}}
+\setbeamercolor{frametitle}{bg=crpPrincipal, fg=white}
 \setbeamercolor{alerted text}{fg=crpSecundaria2}
 \setbeamercolor{subtitle}{fg=crpPrincipal}
 
-% --- 5. LÓGICA DE PROCESSAMENTO DE DADOS COM LUA ---
-% Esta é a abordagem robusta para mapear texto para números.
-\directlua{
-function map_category_to_y(cat)
-    if cat == "Cadernos Temáticos" then return 1
-    elseif cat == "Cartilhas" then return 2
-    elseif cat == "Jornal Psi" then return 3
-    elseif cat == "Livros" then return 4
-    elseif cat == "Diversos" then return 5
-    elseif cat == "Revista Práticas Psi" then return 6
-    else return 0 -- Categoria desconhecida
-    end
-end
-}
-
-% --- 6. DEFINIÇÃO E PROCESSAMENTO DAS TABELAS DE DADOS ---
-% Leitura dos dados brutos
-\pgfplotstableread[col sep=comma, header=true]{
-categoria, ano, volumes
-Cadernos Temáticos, 2022, 2
-Cadernos Temáticos, 2020, 1
-Cadernos Temáticos, 2019, 16
-Cadernos Temáticos, 2016, 6
-Cadernos Temáticos, 2015, 2
-Cadernos Temáticos, 2012, 1
-Cadernos Temáticos, 2011, 3
-Cadernos Temáticos, 2010, 3
-Cadernos Temáticos, 2009, 1
-Cadernos Temáticos, 2008, 1
-Cadernos Temáticos, 2007, 5
-Cartilhas, 2025, 3
-Cartilhas, 2019, 2
-Cartilhas, 2016, 1
-Cartilhas, 2015, 1
-Cartilhas, 2014, 3
-Cartilhas, 2010, 2
-Diversos, 2025, 5
-Diversos, 2022, 7
-Diversos, 2021, 1
-Diversos, 2020, 4
-Diversos, 2019, 123
-Diversos, 2002, 1
-Jornal Psi, 2025, 2
-Jornal Psi, 2024, 4
-Jornal Psi, 2023, 2
-Jornal Psi, 2022, 3
-Jornal Psi, 2021, 1
-Jornal Psi, 2020, 1
-Jornal Psi, 2019, 4
-Jornal Psi, 2018, 3
-Jornal Psi, 2017, 1
-Jornal Psi, 2016, 5
-Jornal Psi, 2015, 5
-Jornal Psi, 2014, 5
-Jornal Psi, 2013, 5
-Jornal Psi, 2012, 2
-Jornal Psi, 2011, 3
-Jornal Psi, 2010, 6
-Jornal Psi, 2009, 6
-Jornal Psi, 2008, 3
-Jornal Psi, 2007, 6
-Jornal Psi, 2006, 5
-Jornal Psi, 2005, 4
-Jornal Psi, 2004, 4
-Jornal Psi, 2003, 4
-Jornal Psi, 2002, 5
-Jornal Psi, 2001, 6
-Jornal Psi, 2000, 5
-Jornal Psi, 1999, 6
-Jornal Psi, 1998, 6
-Jornal Psi, 1997, 7
-Jornal Psi, 1996, 7
-Jornal Psi, 1995, 7
-Jornal Psi, 1994, 7
-Jornal Psi, 1993, 5
-Jornal Psi, 1992, 6
-Jornal Psi, 1991, 7
-Jornal Psi, 1990, 6
-Jornal Psi, 1989, 7
-Jornal Psi, 1988, 8
-Jornal Psi, 1987, 3
-Jornal Psi, 1986, 8
-Jornal Psi, 1985, 8
-Jornal Psi, 1984, 13
-Jornal Psi, 1983, 9
-Jornal Psi, 1982, 6
-Jornal Psi, 1981, 7
-Livros, 2022, 1
-Livros, 2019, 9
-Livros, 2017, 2
-Livros, 2016, 8
-Livros, 2014, 1
-Livros, 2013, 2
-Livros, 2010, 2
-Livros, 2006, 1
-Revista Práticas Psi, 2025, 1
-}\publicacoes
-
-\pgfplotstableread[col sep=comma, header=true]{
-serie, y_cat, inicio, fim
-Em Debate, 5, 2012, 2012
-Caderno de Debates, 5, 2016, 2016
-Qualificação Profissional, 5, 2019, 2019
-Pioneiras da Psicologia, 5, 2022, 2022
-Comunicação Popular, 5, 2010, 2016
-Cadernos Temáticos, 1, 2007, 2025
-}\series
-
-% Usa a função Lua para criar a coluna de coordenadas Y de forma segura.
-\pgfplotstablecreatecol[create col/lua={
-    categoria = table.getraw("categoria")
-    return map_category_to_y(categoria)
-}]{ycoord}{\publicacoes}
-
-% --- INFORMAÇÕES DO DOCUMENTO ---
+%==============================================================================
+% 5. METADADOS DO DOCUMENTO
+%==============================================================================
 \title{Publicações impressas e digitais}
 \subtitle{\textcolor{crpPrincipal}{Livros, cartilhas, Jornal Psi}}
 \author{Conselho Regional de Psicologia de São Paulo}
 \date{Outubro de 2025}
 
-% --- INÍCIO DO DOCUMENTO ---
+%==============================================================================
+% INÍCIO DO DOCUMENTO
+%==============================================================================
 \begin{document}
 
 \begin{frame}[plain]
     \titlepage
 \end{frame}
 
-% === PRIMEIRA PARTE ===
 \part{Análise e cenários}
-
 \section{Histórico}
-\begin{frame}{Histórico das publicações}
-    \begin{tikzpicture}
-        \begin{axis}[
-            width=\textwidth, 
-            height=0.8\textheight,
-            title={Distribuição anual e períodos das linhas editoriais},
-            font=\sffamily\small,
-            title style={font=\sffamily\bfseries},
-            label style={font=\sffamily\scriptsize},
-            tick label style={font=\sffamily\tiny},
-            xlabel={Ano de Publicação},
-            xmin=1980, xmax=2026,
-            xtick distance=5,
-            minor xtick distance=1,
-            ylabel={},
-            y dir=reverse,
-            ytick={1,2,3,4,5,6},
-            yticklabels={Cadernos Temáticos, Cartilhas, Jornal Psi, Livros, Diversos, Revista Práticas Psi},
-            yticklabel style={align=right, font=\sffamily\bfseries\tiny, xshift=-5pt},
-            y tick label style={text width=2.5cm, align=right},
-            axis line style={draw=none},
-            tick style={draw=none},
-            grid=major,
-            grid style={thin, dashed, color=crpPrincipal!20},
-            enlarge y limits={abs=0.8},
-        ]
 
-        % --- Camada 1: Duração das Séries (Contexto) ---
-        \addplot+[
-            xbar interval,
-            fill=crpPrincipal!10,
-            draw=none,
-            bar width=10pt,
-            bar shift=0pt
-        ] table [x=inicio, x end=fim, y=y_cat] {\series};
-        
-        \foreach \i in {0,...,5}{
-            \pgfplotstablegetrow{\i}{\series}
-            \node[anchor=west, font=\sffamily\itshape\tiny, color=black!60] 
-                at (axis cs:{\pgfplotstablevalueof{inicio}{\series}},{\pgfplotstablevalueof{y_cat}{\series}-0.3}) 
-                {\pgfplotstablevalueof{serie}{\series}};
-        }
-        
-        % --- Camada 2: Volume de Publicação (Dados) ---
-        \addplot[
-            scatter, only marks,
-            scatter src=explicit symbolic,
-            mark=*, color=crpPrincipal,
-            scatter/use mapped size=true,
-            scatter/mapped size={2}{20},
-            nodes near coords*={\pgfmathprintnumber[int detect]{\plotpointmeta}},
-            nodes near coords style={font=\sffamily\tiny, anchor=west, color=crpPrincipal!80!black},
-        ] table [x=ano, y=ycoord, meta=volumes] {\publicacoes};
-
-        \end{axis}
-    \end{tikzpicture}
+%------------------------------------------------------------------------------
+% SLIDE 1: TABELA DE PRODUÇÃO ANUAL
+%------------------------------------------------------------------------------
+\begin{frame}[fragile]{Tabela 1: Produção Anual por Categoria}
+    \framesubtitle{Número de volumes publicados por ano}
+    \tiny % Reduz o tamanho da fonte para a tabela caber
+    \begin{tabular}{l c c c c c}
+        \toprule
+        \textbf{Ano} & \textbf{Cadernos} & \textbf{Cartilhas} & \textbf{Livros} & \textbf{Diversos} & \textbf{Rev. Práticas Psi} \\
+        \midrule
+        2025 & & 3 & & 5 & 1 \\
+        2022 & 2 & & 1 & 7 & \\
+        2021 & & & & 1 & \\
+        2020 & 1 & & & 4 & \\
+        2019 & 16 & 2 & 9 & 123\textsuperscript{*} & \\
+        2017 & & & 2 & & \\
+        2016 & 6 & 1 & 8 & & \\
+        2015 & 2 & 1 & & & \\
+        2014 & & 3 & 1 & & \\
+        2013 & & & 2 & & \\
+        2012 & 1 & & & & \\
+        2011 & 3 & & & & \\
+        2010 & 3 & 2 & 2 & & \\
+        2009 & 1 & & & & \\
+        2008 & 1 & & & & \\
+        2007 & 5 & & & & \\
+        2006 & & & 1 & & \\
+        2002 & & & & 1 & \\
+        \bottomrule
+    \end{tabular}
+    
+    \vspace{1em}
+    \scriptsize % Aumenta ligeiramente a fonte para a nota
+    \textsuperscript{*} Em 2019, a categoria 'Diversos' teve uma produção atípica de 123 volumes, incluindo uma vasta coleção de relatórios de inspeção.
 \end{frame}
 
+%------------------------------------------------------------------------------
+% SLIDE 2: TABELA DE SÉRIES EDITORIAIS
+%------------------------------------------------------------------------------
+\begin{frame}{Tabela 2: Período das Séries Editoriais}
+    \begin{tabular}{l l}
+        \toprule
+        \textbf{Série Editorial} & \textbf{Período} \\
+        \midrule
+        Cadernos Temáticos & 2007–2025 \\
+        Comunicação Popular & 2010–2016 \\
+        Pioneiras da Psicologia & 2022 \\
+        Qualificação Profissional & 2019 \\
+        Caderno de Debates & 2016 \\
+        Em Debate & 2012 \\
+        \bottomrule
+    \end{tabular}
+\end{frame}
+
+%------------------------------------------------------------------------------
+% SLIDE 3: TABELA DO HISTÓRICO DO JORNAL PSI
+%------------------------------------------------------------------------------
+\begin{frame}{Tabela 3: Histórico do Jornal Psi}
+    \framesubtitle{Volumes publicados por ano (1981-2025)}
+    \begin{multicols}{2}
+    \tiny
+    \begin{tabular}{l r}
+        \toprule
+        \textbf{Ano} & \textbf{Volumes} \\
+        \midrule
+        2025 & 2 \\
+        2024 & 4 \\
+        2023 & 2 \\
+        2022 & 3 \\
+        2021 & 1 \\
+        2020 & 1 \\
+        2019 & 4 \\
+        2018 & 3 \\
+        2017 & 1 \\
+        2016 & 5 \\
+        2015 & 5 \\
+        2014 & 5 \\
+        2013 & 5 \\
+        2012 & 2 \\
+        2011 & 3 \\
+        2010 & 6 \\
+        2009 & 6 \\
+        2008 & 3 \\
+        2007 & 6 \\
+        2006 & 5 \\
+        2005 & 4 \\
+        2004 & 4 \\
+        \bottomrule
+    \end{tabular}
+    
+    \columnbreak
+    
+    \begin{tabular}{l r}
+        \toprule
+        \textbf{Ano} & \textbf{Volumes} \\
+        \midrule
+        2003 & 4 \\
+        2002 & 5 \\
+        2001 & 6 \\
+        2000 & 5 \\
+        1999 & 6 \\
+        1998 & 6 \\
+        1997 & 7 \\
+        1996 & 7 \\
+        1995 & 7 \\
+        1994 & 7 \\
+        1993 & 5 \\
+        1992 & 6 \\
+        1991 & 7 \\
+        1990 & 6 \\
+        1989 & 7 \\
+        1988 & 8 \\
+        1987 & 3 \\
+        1986 & 8 \\
+        1985 & 8 \\
+        1984 & 13 \\
+        1983 & 9 \\
+        1982 & 6 \\
+        1981 & 7 \\
+        \bottomrule
+    \end{tabular}
+    \end{multicols}
+\end{frame}
+
+
+%------------------------------------------------------------------------------
+% O RESTO DO SEU DOCUMENTO
+%------------------------------------------------------------------------------
 \section{Contexto atual}
 \begin{frame}{Linhas editoriais ativas}
     \normalsize
     \textbf{Categorias no \textit{site}}
+    
     \scriptsize
     \begin{itemize}
-        \item Cadernos Temáticos;
-        \item Cartilhas;
-        \item Crepop;
-        \item Jornal Psi;
-        \item Livros;
-        \item Memória da Psicologia;
-        \item Revista Práticas Psi;
-        \item Diversos.
+        \item Cadernos Temáticos
+        \item Cartilhas
+        \item Crepop
+        \item Jornal Psi
+        \item Livros
+        \item Memória da Psicologia
+        \item Revista Práticas Psi
+        \item Diversos
     \end{itemize}
+    
+    \vspace{0.5em}
+    
     \normalsize
     \textbf{Divisão conceitual}
+    
     \scriptsize
     \begin{itemize}
-        \item \textbf{Institucional e memória:} inclui premiações, relatórios de gestão, anais de eventos etc.;
-        \item \textbf{Informação e divulgação:} Jornal Psi, Cadernos Temáticos, Revista Práticas Psi;
+        \item \textbf{Institucional e memória:} inclui premiações, relatórios de gestão, anais de eventos etc.
+        \item \textbf{Informação e divulgação:} Jornal Psi, Cadernos Temáticos, Revista Práticas Psi
         \item \textbf{Orientação e normativas:} cartilhas, carta de serviços, manuais etc.
     \end{itemize}
 \end{frame}
 
 \section{Exploração de Cenários}
 \begin{frame}{Exploração de cenários}
-    % Conteúdo do slide aqui
 \end{frame}
 
-% === SEGUNDA PARTE ===
 \part{Propostas e Encaminhamentos}
-
 \section{Linhas Editoriais}
 \begin{frame}{Sugestão de Linhas Editoriais}
-    % Conteúdo do slide aqui
 \end{frame}
 
 \section{Sugestões para o Jornal Psi}
 \begin{frame}{Sugestões para o Jornal Psi}
-    % Conteúdo do slide aqui
 \end{frame}
 
 \section{Encaminhamentos}
 \begin{frame}{Encaminhamentos Necessários}
-    % Conteúdo do slide aqui
 \end{frame}
 
 \end{document}
