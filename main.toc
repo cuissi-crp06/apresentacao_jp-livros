@@ -1,0 +1,7 @@
+\beamer@sectionintoc {1}{Histórico}{2}{1}{1}
+\beamer@sectionintoc {2}{Jornal Psi}{10}{2}{2}
+\beamer@sectionintoc {3}{Contexto atual}{12}{2}{3}
+\beamer@sectionintoc {4}{Exploração de cenários}{14}{2}{4}
+\beamer@sectionintoc {5}{Linhas editoriais}{16}{2}{5}
+\beamer@sectionintoc {6}{Sugestões para o Jornal Psi}{18}{2}{6}
+\beamer@sectionintoc {7}{Encaminhamentos}{20}{2}{7}

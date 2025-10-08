@@ -1,0 +1,26 @@
+\frametitle{Jornal Psi: volume anual de edições}
+\begin{tikzpicture}
+			\begin{axis}[
+				width=0.8\textwidth, height=0.6\textheight,
+				title={Edições lançadas por ano (1981–2025)},
+				xlabel={ano de publicação},
+				ylabel={edições},
+				font=\sffamily\small,
+				title style={font=\sffamily\bfseries},
+				label style={font=\sffamily\scriptsize},
+				tick label style={font=\sffamily\tiny},
+				xticklabel style={/pgf/number format/.cd, set thousands separator={}},
+				xmin=1980, xmax=2025,
+				ymin=0, ymax=14,
+				xtick distance=5,
+				ytick distance=2,
+				grid=major,
+				grid style={thin, dashed, color=crpPrincipal!20},
+				]
+
+				% Gráfico de linha
+				\addplot[thick, color=crpPrincipal, mark=*, mark size=1.5pt]
+				table [x=ano, y=volumes] {\publicacoesJornal};
+
+			\end{axis}
+		\end{tikzpicture}
