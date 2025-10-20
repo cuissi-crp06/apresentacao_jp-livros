@@ -1,5 +1,5 @@
 # Fdb version 4
-["lualatex"] 1759938102.08511 "c:/Users/angelo.cuissi/git/apresentacao_jp-livros/main.tex" "main.pdf" "main" 1759938113.35425 0
+["lualatex"] 1760452217.95273 "c:/Users/angelo.cuissi/git/apresentacao_jp-livros/main.tex" "main.pdf" "main" 1760452232.41489 0
   "C:/texlive/2024/texmf-var/luatex-cache/generic/fonts/otl/firamono-bold.luc" 1759841398 182206 463e7507fde53d210656770893e798b1 ""
   "C:/texlive/2024/texmf-var/luatex-cache/generic/fonts/otl/firamono-boldoblique.luc" 1759841398 183844 7deace51917617b22a232e05eaeef1ba ""
   "C:/texlive/2024/texmf-var/luatex-cache/generic/fonts/otl/firamono-medium.luc" 1759841398 182717 129b64bf636bb813bd4636c7ee1ecd60 ""
@@ -26,7 +26,7 @@
   "C:/texlive/2024/texmf-var/luatex-cache/generic/fonts/otl/sourcesanspro-semiboldit.luc" 1759841474 439918 d2665a7f92998d222c07658b27b61c31 ""
   "C:/texlive/2024/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc" 1759852005 6614 ac56e635b9a4d47ac030c7da2c6fa019 ""
   "C:/texlive/2024/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz" 1759841313 333616 3230fb4433e6cd1bce784dedc74c60b0 ""
-  "c:/Users/angelo.cuissi/git/apresentacao_jp-livros/main.tex" 1759938098 16986 3faa9b1b688ee01bd8a15d7a03df82a9 ""
+  "c:/Users/angelo.cuissi/git/apresentacao_jp-livros/main.tex" 1760452213 16967 05c817124177c6578d8801a082583f60 ""
   "c:/texlive/2024/texmf-dist/fonts/opentype/adobe/sourcesanspro/SourceSansPro-Bold.otf" 1718899351 298076 80ce97244540da2d0d07e09c6a4488ef ""
   "c:/texlive/2024/texmf-dist/fonts/opentype/adobe/sourcesanspro/SourceSansPro-Light.otf" 1718899351 290464 8bb0aec8e75b3758fd4a618f79da8d36 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1718895604 1004 54797486969f23fa377b128694d548df ""
@@ -354,11 +354,11 @@
   "c:/texlive/2024/texmf-dist/tex/luatex/luaotfload/luaotfload.lua" 1718897946 13565 50482dad4c221a79dbdbb982122baf8c ""
   "c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1736172500 5531417 afafd3ba8f822fda36e3585e3807683b ""
   "c:/texlive/2024/texmf-var/web2c/luahbtex/lualatex.fmt" 1736173143 5653393 a567624c47733440cdcea9130558af99 ""
-  "main.aux" 1759938113 5692 d167f1817631e7facab969fcfae5451e "lualatex"
-  "main.nav" 1759938113 3658 d3d75f9c1542483b3028e081fda7f38d "lualatex"
-  "main.out" 1759938113 1165 a61da8afd3d5ea6a2234786c1e7b9d1e "lualatex"
-  "main.tex" 1759938098 16986 3faa9b1b688ee01bd8a15d7a03df82a9 ""
-  "main.vrb" 1759938112 825 580d6ebf2a918dd8b687d126e1ef8c5c "lualatex"
+  "main.aux" 1760452231 5692 d167f1817631e7facab969fcfae5451e "lualatex"
+  "main.nav" 1760452231 3658 d3d75f9c1542483b3028e081fda7f38d "lualatex"
+  "main.out" 1760452231 1165 a61da8afd3d5ea6a2234786c1e7b9d1e "lualatex"
+  "main.tex" 1760452213 16967 05c817124177c6578d8801a082583f60 ""
+  "main.vrb" 1760452231 825 580d6ebf2a918dd8b687d126e1ef8c5c "lualatex"
   (generated)
   "main.aux"
   "main.log"
